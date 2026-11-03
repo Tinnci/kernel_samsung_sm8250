@@ -25,8 +25,8 @@ Build-Depends: build-essential,
                lz4,
                device-tree-compiler, linux-initramfs-halium-generic:arm64, binutils-aarch64-linux-gnu, clang-android-14.0-r450784d, gcc-4.9-aarch64-linux-android, g++-4.9-aarch64-linux-android, libgcc-4.9-dev-aarch64-linux-android-cross
 Standards-Version: 4.5.0.3
-Vcs-Browser: https://github.com/iridite/kernel_samsung_sm8250
-Vcs-Git: https://github.com/iridite/kernel_samsung_sm8250.git
+Vcs-Browser: https://github.com/Tinnci/kernel_samsung_sm8250
+Vcs-Git: https://github.com/Tinnci/kernel_samsung_sm8250.git
 
 Package: linux-image-4.19-325-samsung-gts7lwifi
 Architecture: arm64

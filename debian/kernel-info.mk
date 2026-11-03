@@ -11,7 +11,7 @@ VARIANT = android
 KERNEL_BASE_VERSION = 4.19-325
 
 # The kernel cmdline to use
-KERNEL_BOOTIMAGE_CMDLINE = console=null androidboot.hardware=qcom androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 loop.max_part=7 cgroup.memory=nokmem,nosocket reboot=panic_warm buildproduct=gts7lwifi droidian.lvm.prefer
+KERNEL_BOOTIMAGE_CMDLINE = console=tty0 androidboot.hardware=qcom androidboot.memcg=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 firmware_class.path=/vendor/firmware_mnt androidboot.usbcontroller=a600000.dwc3 buildvariant=eng androidboot.selinux=permissive
 
 # Slug for the device vendor. This is going to be used in the KERNELRELASE
 # and package names.
@@ -110,7 +110,7 @@ FLASH_INFO_MODEL = SM-T870
 FLASH_INFO_CPU = Qualcomm Technologies, Inc KONA
 
 # Supported device ids.
-FLASH_INFO_DEVICE_IDS = SM-T870 gts7lwifi gts7l
+FLASH_INFO_DEVICE_IDS = SM-T870 gts7lwifi
 
 ########################################################################
 # Kernel build settings

@@ -21,3 +21,21 @@ override_dh_install:
 	  echo "I: Patching $$img with SEANDROIDENFORCE trailer on kernel section"; \
 	  python3 debian/seandroid-patch.py "$$img"; \
 	done
+
+	@set -eu; \
+	for directory in debian/linux-bootimage-*/boot; do \
+	  for img in "$$directory"/boot.img-* "$$directory"/recovery.img-*; do \
+	    test -f "$$img" || continue; \
+	    partition=boot; case "$$img" in */recovery.img-*) partition=recovery;; esac; \
+	    python3 debian/samsung/build-bootimg.py "$$img" "$$img.signed" --partition "$$partition" --key debian/samsung/testkey_rsa4096.pem; \
+	    mv "$$img.signed" "$$img"; \
+	  done; \
+	  for img in "$$directory"/dtbo.img-*; do \
+	    test -f "$$img" || continue; \
+	    python3 debian/samsung/make-touchpad-dtbo.py "$$img" "$$img.signed" --key debian/samsung/testkey_rsa4096.pem; \
+	    mv "$$img.signed" "$$img"; \
+	  done; \
+	  for img in "$$directory"/vbmeta.img-*; do \
+	    avbtool make_vbmeta_image --flags 2 --padding_size 4096 --output "$$img"; \
+	  done; \
+	done
